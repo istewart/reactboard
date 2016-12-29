@@ -1,0 +1,18 @@
+{
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import",
+        "flowtype",
+        "flowtype-errors"
+    ],
+  "rules": {
+    "flowtype-errors/show-errors": 2,
+    "no-console": 0,
+    "import/no-extraneous-dependencies": 2,
+    "react/prop-types": 1,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
+}

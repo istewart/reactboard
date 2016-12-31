@@ -3,11 +3,11 @@ import React from 'react';
 
 const Tweet = function TweetKappa(props) {
   return (
-    <div className="well" style={{ backgroundColor: 'white', maxWidth: '500px', textAlign: 'left' }}>
+    <div className="well" style={{ backgroundColor: 'white', textAlign: 'left' }}>
       <div className="tweet-image" style={{ float: 'left', margin: '1rem' }}>
 	      <img
 	          style={{width: 50, height: 50}}
-	          src={'https://facebook.github.io/react/img/logo_og.png'}
+	          src={ props.image }
           />
       </div>
       <div className="tweet-data" style={{ margin: '1rem' }}>

@@ -4,7 +4,7 @@ import Tweet from '../components/Tweet';
 const TweetContainer = function TweetContainerKappa(props: Object) {
   return (
 
-    <div className="text-center col-sm-4">
+    <div className="text-center col-sm-6">
       <div className="well">
         <Tweet
           text = { "hello world" }
@@ -12,10 +12,6 @@ const TweetContainer = function TweetContainerKappa(props: Object) {
           handle = { "@shapelikefriend" }
           image = { "http://pbs.twimg.com/profile_images/673373529908207616/E6EWF84p_normal.jpg" }
         />
-        <Tweet />
-        <Tweet />
-        <Tweet />
-        <Tweet />
         <Tweet />
         <Tweet />
         <Tweet />

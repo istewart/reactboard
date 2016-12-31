@@ -3,14 +3,15 @@ import React from 'react';
 const Navbar = function NavbarKappa() {
   return (
     <div>
-      <form className="navbar-form navbar-right" role="search">
-        <div className="form-group">
-          <input type="text" className="form-control" placeholder="Search" />
+      <form className="navbar-form" role="search">
+        <div>
+          <input type="text" className="form-control" placeholder="Search" style={{width: '100%'}} />
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
       </form>
     </div>
   );
 };
 
 export default Navbar;
+
+// <button type="submit" className="btn btn-default">Submit</button>

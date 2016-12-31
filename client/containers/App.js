@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Navbar from '../components/Navbar';
+// import Navbar from '../components/Navbar';
 import * as actionCreators from '../reducers/actioncreators';
 
 const { element, shape, object } = React.PropTypes;
@@ -10,11 +10,11 @@ const { element, shape, object } = React.PropTypes;
 const App = function AppKappa(props: Object) {
   return (
     <div>
-      <Navbar {...props} />
       {React.cloneElement(props.children, { apiRespData: props.router.location.query })}
     </div>
   );
 };
+// <Navbar {...props} />
 App.propTypes = {
   children: element,
   router: shape({ location: object }),

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "configure": "./secrets.sh",
+    "testApi": "node ./client/api/TwitterApi.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server",
+    "dev": "npm run configure && webpack-dev-server",
     "bundle": "webpack --watch --debug"
   },
   "author": "c4o",

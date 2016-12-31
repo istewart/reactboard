@@ -3,8 +3,8 @@ import React from 'react';
 
 const Tweet = function TweetKappa() {
   return (
-    <div>
-        <p style={{ fontSize: '18pt' }}>A TWEET</p>
+    <div className="well" style={{ backgroundColor: 'lightslategrey' }}>
+      <p style={{ fontSize: '18pt' }}>A TWEET</p>
     </div>
   );
 };

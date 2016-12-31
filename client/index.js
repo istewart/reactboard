@@ -20,4 +20,4 @@ render(
   </Provider>,
   mount,
 );
-//<Route path="/forecast/:city" component={ForecastContainer} />
+// <Route path="/forecast/:city" component={ForecastContainer} />

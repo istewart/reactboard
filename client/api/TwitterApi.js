@@ -20,12 +20,3 @@ console.log('SECRET', SECRETS.TWITTER_CONSUMER_KEY);
 client.get('search/tweets', { q: 'node.js', count: 99 }, (error, tweets, response) => { // caps at 100
   console.log(tweets);
 });
-
-// client.stream('statuses/filter', { track: 'twitter' }, (stream) => {
-//   stream.on('data', (tweet) => {
-//     console.log(tweet.text);
-//   });
-//   stream.on('error', (error) => {
-//     console.log(error);
-//   });
-// });

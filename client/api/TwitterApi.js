@@ -11,9 +11,21 @@ const client = new Twitter({
 
 console.log('SECRET', SECRETS.TWITTER_CONSUMER_KEY);
 
-const stream = client.stream('statuses/filter', { track: 'javascript' });
-stream.on('data', (event) => {
-  console.log(event && event.text);
+// const stream = client.stream('statuses/sample', { track: 'javascript' });
+// stream.on('data', (event) => {
+//   console.log(event && event.text);
+// });
+// stream.on('error', error => console.log(error));
+
+client.get('search/tweets', { q: 'node.js', count: 99 }, (error, tweets, response) => { // caps at 100
+  console.log(tweets);
 });
 
-stream.on('error', error => console.log(error));
+// client.stream('statuses/filter', { track: 'twitter' }, (stream) => {
+//   stream.on('data', (tweet) => {
+//     console.log(tweet.text);
+//   });
+//   stream.on('error', (error) => {
+//     console.log(error);
+//   });
+// });

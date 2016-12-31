@@ -6,7 +6,12 @@ const TweetContainer = function TweetContainerKappa(props: Object) {
 
     <div className="text-center col-sm-4">
       <div className="well">
-        <Tweet />
+        <Tweet
+          text = { "hello world" }
+          name = { "Ian Stewart" }
+          handle = { "@shapelikefriend" }
+          image = { "http://pbs.twimg.com/profile_images/673373529908207616/E6EWF84p_normal.jpg" }
+        />
         <Tweet />
         <Tweet />
         <Tweet />

@@ -12,7 +12,7 @@ class MainContainer extends React.Component {
     super();
   }
   componentWillMount() {
-    this.props.makeApiRequest();
+    this.props.notifyOfApiRequest();
   }
   componentDidMount() {
     console.log('mounted main container');
@@ -32,7 +32,7 @@ class MainContainer extends React.Component {
   }
 }
 MainContainer.propTypes = {
-  makeApiRequest: React.PropTypes.func.isRequired,
+  notifyOfApiRequest: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = null;

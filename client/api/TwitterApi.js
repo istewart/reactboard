@@ -22,4 +22,4 @@ const apiClientGet = function apiClientGetKappa(callback = console.log) {
     }).catch(error => console.log('ERROR', error));
 };
 
-apiClientGet()
+apiClientGet();

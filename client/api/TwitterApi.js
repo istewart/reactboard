@@ -1,6 +1,8 @@
 // @flow
 const Twitter = require('twitter');
+const promise = require('promise');
 const SECRETS = require('../../secrets.js');
+// const actionCreators = require('../reducers/actioncreators.js')
 
 const client = new Twitter({
   consumer_key: SECRETS.TWITTER_CONSUMER_KEY,
@@ -9,23 +11,15 @@ const client = new Twitter({
   access_token_secret: SECRETS.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-console.log('SECRET', SECRETS.TWITTER_CONSUMER_KEY);
+const apiClientGet = function apiClientGetKappa(callback = console.log) {
+  client.get('search/tweets', { q: 'node.js', count: 2 }).then(
+    (tweets) => {
+      const tweetsDistilled = tweets.statuses
+        .map(statusObj => ({ id: statusObj.id, src: statusObj.user.profile_image_url }));
+      // console.log('VICTYORY ISH', tweetsDistilled);
+      callback(tweetsDistilled);
+      return tweetsDistilled; // rather, ship tweetsDistalled -> store
+    }).catch(error => console.log('ERROR', error));
+};
 
-// const stream = client.stream('statuses/sample', { track: 'javascript' });
-// stream.on('data', (event) => {
-//   console.log(event && event.text);
-// });
-// stream.on('error', error => console.log(error));
-
-client.get('search/tweets', { q: 'node.js', count: 99 }, (error, tweets, response) => { // caps at 100
-  console.log(tweets);
-});
-
-// client.stream('statuses/filter', { track: 'twitter' }, (stream) => {
-//   stream.on('data', (tweet) => {
-//     console.log(tweet.text);
-//   });
-//   stream.on('error', (error) => {
-//     console.log(error);
-//   });
-// });
+apiClientGet()

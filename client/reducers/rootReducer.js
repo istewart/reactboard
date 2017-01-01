@@ -19,14 +19,15 @@ const rootReducer = function rootReducerKappa(
       return state;
     case NOTIFY_OF_API_REQUEST:
       console.log('yup requesting tweets');
-      console.log([...state]);
+      // should also change the inFlight stuff eventually
       return [...state];
     case FETCH_FROM_API_AFTER_REQUEST:
       console.log('fetching');
       return state;
     case GRAB_RESOLVED_API_RESP_PAYLOAD:
       console.log('grabing payload');
-      return state;
+      console.log(['updated state', ...state, action.payload]);
+      return [...state, action.payload];
     default:
       return state;
   }

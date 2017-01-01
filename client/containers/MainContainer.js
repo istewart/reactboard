@@ -8,14 +8,9 @@ import Navbar from '../components/Navbar';
 import TweetContainer from '../containers/TweetContainer';
 
 class MainContainer extends React.Component {
-  constructor(props) {
-    super();
-  }
   componentWillMount() {
-    this.props.notifyOfApiRequest();
-  }
-  componentDidMount() {
-    console.log('mounted main container');
+    // console.log('mounted main container');
+    this.props.fetchFromApiAfterRequest();
   }
   render() {
     return (
@@ -24,7 +19,7 @@ class MainContainer extends React.Component {
           <Navbar />
         </div>
         <div className="row col-sm-12">
-          <TweetContainer />
+          <TweetContainer {...this.props} />
           <Main />
         </div>
       </div>
@@ -32,7 +27,8 @@ class MainContainer extends React.Component {
   }
 }
 MainContainer.propTypes = {
-  notifyOfApiRequest: React.PropTypes.func.isRequired,
+  // notifyOfApiRequest: React.PropTypes.func.isRequired,
+  fetchFromApiAfterRequest: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = null;

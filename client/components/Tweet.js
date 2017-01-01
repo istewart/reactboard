@@ -8,17 +8,16 @@ const Tweet = function TweetKappa(props: Object) {
         <img
           alt="ok"
           style={{ width: 50, height: 50 }}
-          src={props.image}
+          src={props.src}
         />
       </div>
       <div className="tweet-data" style={{ margin: '1rem' }}>
         <span style={{ fontSize: '14pt', marginRight: '1rem' }}> { props.name } </span>
         <span style={{ fontSize: '12pt' }}> { props.handle } </span>
-        <p style={{ fontSize: '10pt' }}> { props.text } </p>
+        <p style={{ fontSize: '10pt' }}> { `${props.id} | ${props.text}` } </p>
       </div>
     </div>
   );
 };
-// <p>{JSON.stringify(props.apiRespData, null, '')}</p>
 
 export default Tweet;

@@ -1,3 +1,4 @@
+// @flow
 import {
   NOTIFY_OF_API_REQUEST,
   FETCH_FROM_API_AFTER_REQUEST,
@@ -7,7 +8,10 @@ import {
 
 const defaultState: Array<Object> = [];
 
-const rootReducer = function rootReducerKappa(state: Array<Object> = defaultState, action) {
+const rootReducer = function rootReducerKappa(
+  state: Array<Object> = defaultState,
+  action: Function|Object,
+) {
   console.log('REDUCER FIRING');
   switch (action.type) {
     case LOL:

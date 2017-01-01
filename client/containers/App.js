@@ -14,7 +14,6 @@ const App = function AppKappa(props: Object) {
     </div>
   );
 };
-// <Navbar {...props} />
 App.propTypes = {
   children: element,
   router: shape({ location: object }),

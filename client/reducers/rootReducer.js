@@ -25,7 +25,7 @@ const rootReducer = function rootReducerKappa(
       return state;
     case GRAB_RESOLVED_API_RESP_PAYLOAD:
       console.log(['grabed payload, updated state', ...state, action.payload]);
-      return [...state, action.payload];
+      return [action.payload, ...state];
     default:
       return state;
   }

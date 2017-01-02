@@ -12,7 +12,7 @@ app.get('/search', (req, res) => {
   console.log(promisedData);
 
   promisedData.then((tweets) => {
-    console.log('STATUS OBJ EXAMPLE', tweets.statuses[0]);
+    // console.log('STATUS OBJ EXAMPLE', tweets.statuses[0]);
     const tweetsDistilled = tweets.statuses
       .map(statusObj => ({
         id: statusObj.id,
@@ -22,9 +22,8 @@ app.get('/search', (req, res) => {
         src: statusObj.user.profile_image_url,
       }));
 
-    console.log('VICTYORY ISH', tweetsDistilled);
     res.send(JSON.stringify(tweetsDistilled));
   }).catch(error => console.log('ERROR', error));
 });
 
-app.listen(2500, () => console.log('Example app listening on port 2500!'));
+app.listen(2500, () => console.log('Backend server listening on port 2500...'));

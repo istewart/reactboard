@@ -8,15 +8,21 @@ import Navbar from '../components/Navbar';
 import TweetContainer from '../containers/TweetContainer';
 
 class MainContainer extends React.Component {
+  constructor(props) {
+  	super();
+  	this.handleNavSubmit = this.handleNavSubmit.bind(this);
+  }
+
   componentWillMount() {
     this.props.fetchFromApiAfterRequest();
   }
   // componentDidUpdate() { this.props.fetchFromApiAfterRequest(); }
 
-  handleNavSubmit(event) {
-    event.preventDefault();
-    alert('NAVBAR ENTER');
+  handleNavSubmit(event, input) {
+  	event.preventDefault();
+    this.props.fetchFromApiAfterRequest(input);
   }
+
   render() {
     return (
       <div className="center-block" style={{ maxWidth: '1200px' }}>

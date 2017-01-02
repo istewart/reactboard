@@ -1,21 +1,30 @@
 const express = require('express');
 const apiGet = require('./twitterApiGet');
+const cors = require('cors');
 
-const app = express()
+const app = express();
+app.use(cors());
 
-app.get('/search', function (req, res) {
-  const tweetsDistilled = apiGet(req.query.q);
-  console.log(tweetsDistilled);
-  tweetsDistilled.then(
-    (tweets) => {
-      const tweetsDistilled = tweets.statuses
-        .map(statusObj => ({ id: statusObj.id, src: statusObj.user.profile_image_url }));
-      console.log('VICTYORY ISH', tweetsDistilled);
-      // callback(tweetsDistilled);
-      res.send(tweetsDistilled); // rather, ship tweetsDistalled -> store
-    }).catch(error => console.log('ERROR', error));
-})
+app.get('/search', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
 
-app.listen(8081, function () {
-  console.log('Example app listening on port 8081!')
-})
+  const promisedData = apiGet(req.query.q);
+  console.log(promisedData);
+
+  promisedData.then((tweets) => {
+    console.log('STATUS OBJ EXAMPLE', tweets.statuses[0]);
+    const tweetsDistilled = tweets.statuses
+      .map(statusObj => ({
+        id: statusObj.id,
+        text: statusObj.text,
+        name: statusObj.user.name,
+        handle: statusObj.user.screen_name,
+        src: statusObj.user.profile_image_url,
+      }));
+
+    console.log('VICTYORY ISH', tweetsDistilled);
+    res.send(JSON.stringify(tweetsDistilled));
+  }).catch(error => console.log('ERROR', error));
+});
+
+app.listen(2500, () => console.log('Example app listening on port 2500!'));

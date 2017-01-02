@@ -1,4 +1,3 @@
-// @flow
 const Twitter = require('twitter');
 const promise = require('promise');
 const SECRETS = require('../../secrets');
@@ -12,8 +11,8 @@ const client = new Twitter({
 });
 
 const twitterApiGet = function twitterApiGetKappa(searchTarget) {
-  if (!searchTarget) { const searchTarget = 'node.js'; }
-  return client.get('search/tweets', { q: searchTarget, count: 2 })
+  const searchTargetQuery = searchTarget || 'node.js';
+  return client.get('search/tweets', { q: searchTargetQuery, count: 2 });
 };
 
 // twitterApiGet();

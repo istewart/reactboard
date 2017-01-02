@@ -3,23 +3,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import React from 'react';
 import * as actionCreators from '../reducers/actioncreators';
-import Main from '../components/Main';
+import MetricsContainer from '../containers/MetricsContainer';
 import Navbar from '../components/Navbar';
 import TweetContainer from '../containers/TweetContainer';
 
 class MainContainer extends React.Component {
-  constructor(props) {
-  	super();
-  	this.handleNavSubmit = this.handleNavSubmit.bind(this);
+  constructor() {
+    super();
+    this.handleNavSubmit = this.handleNavSubmit.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchFromApiAfterRequest();
   }
-  // componentDidUpdate() { this.props.fetchFromApiAfterRequest(); }
 
   handleNavSubmit(event, input) {
-  	event.preventDefault();
+    event.preventDefault();
     this.props.fetchFromApiAfterRequest(input);
   }
 
@@ -31,7 +30,7 @@ class MainContainer extends React.Component {
         </div>
         <div className="row col-sm-12">
           <TweetContainer {...this.props} />
-          <Main />
+          <MetricsContainer {...this.props} />
         </div>
       </div>
     );

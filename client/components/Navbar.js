@@ -1,18 +1,20 @@
 import React from 'react';
 
 class Navbar extends React.Component {
-  constructor(props) {
+  constructor() {
     super();
     this.input = null;
   }
 
   render() {
     return (
-      <form 
-        onSubmit={(event) => this.props.handleNavSubmit(event, this.input.value)}
+      <form
+        onSubmit={event => this.props.handleNavSubmit(event, this.input.value)}
         className="navbar-form"
-        role="search">
-        <input ref={(input) => { this.input = input; }}
+        role="search"
+      >
+        <input
+          ref={(input) => { this.input = input; }}
           type="text"
           className="form-control"
           placeholder="Search"
@@ -21,7 +23,7 @@ class Navbar extends React.Component {
       </form>
     );
   }
-};
+}
 
 Navbar.propTypes = {
   handleNavSubmit: React.PropTypes.func,

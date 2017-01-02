@@ -1,7 +1,7 @@
 // @flow
 const Twitter = require('twitter');
 const promise = require('promise');
-const SECRETS = require('../../secrets.js');
+const SECRETS = require('../../secrets');
 // const actionCreators = require('../reducers/actioncreators.js')
 
 const client = new Twitter({
@@ -11,15 +11,9 @@ const client = new Twitter({
   access_token_secret: SECRETS.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-const twitterApiGet = function twitterApiGetKappa(searchTarget: string = 'node.js') {
-  client.get('search/tweets', { q: searchTarget, count: 2 }).then(
-    (tweets) => {
-      const tweetsDistilled = tweets.statuses
-        .map(statusObj => ({ id: statusObj.id, src: statusObj.user.profile_image_url }));
-      // console.log('VICTYORY ISH', tweetsDistilled);
-      // callback(tweetsDistilled);
-      return tweetsDistilled; // rather, ship tweetsDistalled -> store
-    }).catch(error => console.log('ERROR', error));
+const twitterApiGet = function twitterApiGetKappa(searchTarget) {
+  if (!searchTarget) { const searchTarget = 'node.js'; }
+  return client.get('search/tweets', { q: searchTarget, count: 2 })
 };
 
 // twitterApiGet();

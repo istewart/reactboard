@@ -1,6 +1,6 @@
 // @flow
 // import twitterApiGet from '../api/twitterApiGet'; // breaking webpack
-// const Twitter = require('twitter');
+const Twitter = require('twitter');
 // const net = require('net');
 // import Twitter from 'twitter';
 import delay from 'delay';

@@ -10,15 +10,35 @@ class Wordcloud extends React.Component {
     }
     console.log('STATE IN PROPS', this.props.state[0]);
     const tweetsArr = this.props.state[0];
-    console.log(tweetsArr.map(tweetObj => countBy(tweetObj.text.split(' '))));
+    const tweetsConcat = tweetsArr.reduce((accum, tweetObj) => accum + ' ' + tweetObj.text);
+    const tweetMap = countBy(tweetsConcat.split(' '));
+    const tweetPairs = Object.entries(tweetMap).sort((a, b) => b[1] - a[1]).slice(0, 50);
 
-    WordCloudGenerator(document.getElementById('wordcloud'), { list: [['foo', 12], ['bar', 6]] });
+    console.log(tweetPairs);
+
+    const options = {
+      list: tweetPairs,
+      gridSize: Math.round(16 * document.getElementById('wordcloud').width / 1024),
+      weightFactor: function (size) {
+        return Math.pow(size, 2.3) * document.getElementById('wordcloud').width / 1024;
+      },
+      fontFamily: 'Times, serif',
+      color: function (word, weight) {
+        return (weight === 12) ? '#f02222' : '#c09292';
+      },
+      rotateRatio: 0.5,
+      rotationSteps: 2,
+      backgroundColor: '#ffe0e0',
+    }
+
+    WordCloudGenerator(document.getElementById('wordcloud'), options);
+    // WordCloudGenerator(document.getElementById('wordcloud'), { list: [['foo', 12], ['bar', 6]] });
   }
   render() {
     return (
       <div className="row well">
         <p> THIS IS Wordcloud </p>
-        <canvas id="wordcloud" />
+        <canvas id="wordcloud" style={{ width: '100%', height: 'auto' }} />
       </div>
     );
   }

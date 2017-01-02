@@ -9,14 +9,19 @@ import TweetContainer from '../containers/TweetContainer';
 
 class MainContainer extends React.Component {
   componentWillMount() {
-    // console.log('mounted main container');
     this.props.fetchFromApiAfterRequest();
+  }
+  // componentDidUpdate() { this.props.fetchFromApiAfterRequest(); }
+
+  handleNavSubmit(event) {
+    event.preventDefault();
+    alert('NAVBAR ENTER');
   }
   render() {
     return (
       <div className="center-block" style={{ maxWidth: '1200px' }}>
         <div className="row col-sm-12">
-          <Navbar />
+          <Navbar handleNavSubmit={this.handleNavSubmit} />
         </div>
         <div className="row col-sm-12">
           <TweetContainer {...this.props} />

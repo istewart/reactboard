@@ -3,20 +3,21 @@
 // const Twitter = require('twitter');
 // const net = require('net');
 // import Twitter from 'twitter';
+import delay from 'delay';
 
 export const NOTIFY_OF_API_REQUEST = 'NOTIFY_OF_API_REQUEST';
 export const FETCH_FROM_API_AFTER_REQUEST = 'FETCH_FROM_API_AFTER_REQUEST';
 export const GRAB_RESOLVED_API_RESP_PAYLOAD = 'GRAB_RESOLVED_API_RESP_PAYLOAD';
 export const LOL = 'LOL';
 
-export const notifyOfApiRequest = function notifyOfApiRequestKappa(): Object {
+const notifyOfApiRequest = function notifyOfApiRequestKappa(): Object {
   return ({
     type: NOTIFY_OF_API_REQUEST,
     requestInFlight: true,
   });
 };
 
-export const grabResolvedApiRespPayload = function grabResolvedApiRespPayloadKappa(
+const grabResolvedApiRespPayload = function grabResolvedApiRespPayloadKappa(
   payload: Array<Object>,
 ): Object {
   return ({
@@ -36,8 +37,9 @@ const dummyData = [
 export const fetchFromApiAfterRequest = function fetchFromApiAfterRequestKappa(): Function {
   return (dispatch: Function) => {
     dispatch(notifyOfApiRequest()); // not sure if this should be function or function invokation
-    return Promise.resolve(dummyData)
+    return Promise.resolve(dummyData).then(delay(1000))
       .then((respArr) => {
+        console.log('1s passed');
         // console.log('not in state', respArr);
         dispatch(grabResolvedApiRespPayload(respArr));
       })

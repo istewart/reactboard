@@ -20,7 +20,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = function mapStateToPropsKappa(state: Object) {
-  console.log('MSTP', state);
+  // console.log('MSTP', state);
   return { state };
 };
 const mapDispatchToProps: Function = function mapDispatchToPropsKappa(dispatch) {

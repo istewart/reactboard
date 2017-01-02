@@ -2,8 +2,6 @@ import React from 'react';
 import Tweet from '../components/Tweet';
 
 const TweetContainer = function TweetContainerKappa(props: Object) {
-  console.log('SDFDSFDSF', props.state);
-  console.log('SDFDSFDSF', props.state[0]);
   return (
 
     <div className="text-center col-sm-6">

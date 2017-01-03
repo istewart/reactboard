@@ -21,7 +21,7 @@ class Wordcloud extends React.Component {
       // drawOutOfBound: true,
       gridSize: Math.round(16 * document.getElementById('wordcloud').width / 1024),
       weightFactor: function (size) {
-        return 3 * Math.pow(size, 1.3) * document.getElementById('wordcloud').width / 1024;
+        return 5 * Math.pow(size, 1.3) * document.getElementById('wordcloud').width / 1024;
       },
       fontFamily: 'Times, serif',
       // color: function (word, weight) {
@@ -29,7 +29,7 @@ class Wordcloud extends React.Component {
       // },
       rotateRatio: 0.5,
       rotationSteps: 2,
-      minSize: '20pt',
+      minSize: 8,
       // backgroundColor: '#ffe0e0',
     }
 
@@ -39,7 +39,6 @@ class Wordcloud extends React.Component {
   render() {
     return (
       <div className="row well">
-        <p> THIS IS Wordcloud </p>
         <canvas id="wordcloud" style={{ width: '100%', height: 'auto' }} />
       </div>
     );

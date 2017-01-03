@@ -9,6 +9,7 @@ const TweetContainer = function TweetContainerKappa(props: Object) {
         {
           props.state[0] &&
           props.state[0].map(tweetData => <Tweet key={tweetData.id} {...tweetData} />)
+          .slice(0, 5)
         }
       </div>
     </div>

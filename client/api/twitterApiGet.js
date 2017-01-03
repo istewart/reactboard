@@ -12,7 +12,7 @@ const client = new Twitter({
 
 const twitterApiGet = function twitterApiGetKappa(searchTarget) {
   const searchTargetQuery = searchTarget || 'node.js';
-  return client.get('search/tweets', { q: searchTargetQuery, lang: 'en', count: 5 });
+  return client.get('search/tweets', { q: searchTargetQuery, lang: 'en', count: 100 });
 };
 
 // twitterApiGet();

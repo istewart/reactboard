@@ -12,24 +12,25 @@ class Wordcloud extends React.Component {
     const tweetsArr = this.props.state[0];
     const tweetsConcat = tweetsArr.reduce((accum, tweetObj) => accum + ' ' + tweetObj.text);
     const tweetMap = countBy(tweetsConcat.split(' '));
-    const tweetPairs = Object.entries(tweetMap).sort((a, b) => b[1] - a[1]).slice(0, 70);
+    const tweetPairs = Object.entries(tweetMap).sort((a, b) => b[1] - a[1]).slice(0, 80);
 
     console.log(tweetPairs);
 
     const options = {
       list: tweetPairs,
-      drawOutOfBound: false,
+      // drawOutOfBound: true,
       gridSize: Math.round(16 * document.getElementById('wordcloud').width / 1024),
       weightFactor: function (size) {
-        return 2 * Math.pow(size, 1.7) * document.getElementById('wordcloud').width / 1024;
+        return 3 * Math.pow(size, 1.3) * document.getElementById('wordcloud').width / 1024;
       },
       fontFamily: 'Times, serif',
-      color: function (word, weight) {
-        return (weight === 12) ? '#f02222' : '#c09292';
-      },
+      // color: function (word, weight) {
+      //   return (weight === 12) ? '#f02222' : '#c09292';
+      // },
       rotateRatio: 0.5,
       rotationSteps: 2,
-      backgroundColor: '#ffe0e0',
+      minSize: '20pt',
+      // backgroundColor: '#ffe0e0',
     }
 
     WordCloudGenerator(document.getElementById('wordcloud'), options);

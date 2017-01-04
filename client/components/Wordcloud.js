@@ -1,7 +1,7 @@
 // @ flow
 import React from 'react';
 import WordCloudGenerator from 'wordcloud';
-import { countBy } from 'lodash';
+import { countBy, sample } from 'lodash';
 
 class Wordcloud extends React.Component {
   componentDidUpdate() {
@@ -11,7 +11,7 @@ class Wordcloud extends React.Component {
     console.log('STATE IN PROPS', this.props.state[0]);
     const tweetsArr = this.props.state[0];
     const tweetsConcat = tweetsArr.reduce((accum, tweetObj) => accum + ' ' + tweetObj.text.toLowerCase());
-    const tweetMap = countBy(tweetsConcat.split(/[^@\w+]/));
+    const tweetMap = countBy(tweetsConcat.split(/[^#@\w+]/));
     const tweetPairs = Object.entries(tweetMap).sort((a, b) => b[1] - a[1]).slice(0, 80);
 
     console.log(tweetPairs);
@@ -21,12 +21,16 @@ class Wordcloud extends React.Component {
       // drawOutOfBound: true,
       gridSize: Math.round(16 * document.getElementById('wordcloud').width / 1024),
       weightFactor: function (size) {
-        return 20 * Math.pow(size, .5) * document.getElementById('wordcloud').width / 1024;
+        return 22 * Math.pow(size, .5) * document.getElementById('wordcloud').width / 1024;
       },
       fontFamily: 'Times, serif',
       // color: function (word, weight) {
       //   return (weight === 12) ? '#f02222' : '#c09292';
       // },
+      color: function (word, weight) {
+        const colors = ['#AA6439', '#AA7F39', '#2C4770', '#256E5E', '#7F2A68', '#9AA637', '#f02222', '#c09292'];
+        return sample(colors);
+      },
       rotateRatio: 0.5,
       rotationSteps: 2,
       minSize: 5,

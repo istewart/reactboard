@@ -12,6 +12,7 @@ class Navbar extends React.Component {
         onSubmit={event => this.props.handleNavSubmit(event, this.input.value)}
         className="navbar-form"
         role="search"
+        style={{ paddingRight: 0 }}
       >
         <input
           ref={(input) => { this.input = input; }}
